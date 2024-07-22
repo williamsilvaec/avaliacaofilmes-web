@@ -1,14 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 /* src/styles.scss */
-@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/themes/aura-light-blue/theme.css";
 @import "primeng/resources/primeng.css";
 @import "primeflex/primeflex.css";
+@import "primeicons/primeicons.css";
+@import "primeng-custom";
 
 body, html {
   height: 100%;
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
   overflow: hidden;
+  background: radial-gradient(circle at 76% 33%, #e9f0f5 0, #f2f0f4 57%, #f5f5f5 100%);
 }
 
 :root {
@@ -16,11 +18,6 @@ body, html {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-.p-component {
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-  font-size: 14px;
 }
 
 .container {
@@ -98,5 +95,28 @@ app-navbar {
 app-navbar.collapsed {
   width: calc(100% - 80px); /* Subtrai a largura da sidebar colapsada */
   left: 80px; /* Ajusta a posição para começar após a sidebar colapsada */
+}
+
+@media (max-width: 768px) {
+  app-sidebar {
+    width: 80px; /* Largura colapsada */
+  }
+
+  app-sidebar.collapsed {
+    width: 80px;
+  }
+
+  nav a span {
+    display: none; /* Esconde o texto dos links */
+  }
+
+  .content {
+    margin-left: 80px;
+  }
+
+  app-navbar {
+    width: calc(100% - 80px);
+    left: 80px;
+  }
 }
 

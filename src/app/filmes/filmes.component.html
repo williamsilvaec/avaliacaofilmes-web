@@ -1,1 +1,68 @@
-<p>filmes works!</p>
+<h2>Lista de filmes</h2>
+<p-card>
+  <p-table [value]="filmes" [lazy]="true" (onLazyLoad)="aoMudarPagina($event)"
+           [paginator]="true" [rows]="filtro.itensPorPagina" [totalRecords]="totalRegistros"
+           [loading]="loading"
+           [showLoader]="false"
+           [pageLinks]="3"
+           [tableStyle]="{'min-width': '40rem'}" #tabela>
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="min-width:50px">ID</th>
+        <th style="min-width:50px">Ano</th>
+        <th style="min-width:200px" pSortableColumn="titulo">Título<p-sortIcon field="titulo"></p-sortIcon></th>
+        <th style="min-width:100px">Vencedor?</th>
+      </tr>
+      <tr>
+        <th style="min-width:50px"></th>
+        <th style="min-width:50px">
+          <input pInputText class="p-inputtext-sm" pKeyFilter="int" (input)="aoFiltrarAno($event)"/>
+        </th>
+        <th style="min-width:200px"></th>
+        <th style="min-width:100px">
+          <p-dropdown [options]="vencedoresOptions" [(ngModel)]="filtro.vencedor"
+                      (onChange)="aoFiltrarVencedor()"
+                      appendTo="body"
+                      class="p-inputtext-sm"
+                      optionLabel="label" optionValue="value"/>
+        </th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-filme>
+      <tr>
+        <td><span class="p-column-title">Id</span>{{filme.id}}</td>
+        <td><span class="p-column-title">Ano</span>{{filme.ano}}</td>
+        <td><span class="p-column-title">Título</span>{{filme.titulo}}</td>
+        <td><span class="p-column-title">Vencedor</span>
+          <p-tag [value]="filme.vencedor ? 'Sim' : 'Não'" [severity]="getSeverity(filme.vencedor)" />
+        </td>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="4">
+          <i class="pi pi-exclamation-circle mr-3" style="font-size: large"></i>
+          Nenhum registro encontrado
+        </td>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="loadingbody">
+      <tr style="height:46px">
+        <td><p-skeleton width="2rem" styleClass="mb-2"></p-skeleton></td>
+        <td><p-skeleton width="5rem" styleClass="mb-2"></p-skeleton></td>
+        <td><p-skeleton width="5rem" styleClass="mb-2"></p-skeleton></td>
+        <td><p-skeleton width="5rem" styleClass="mb-2"></p-skeleton></td>
+      </tr>
+      <tr style="height:46px">
+        <td><p-skeleton width="2rem" styleClass="mb-2"></p-skeleton></td>
+        <td><p-skeleton width="5rem" styleClass="mb-2"></p-skeleton></td>
+        <td><p-skeleton width="5rem" styleClass="mb-2"></p-skeleton></td>
+        <td><p-skeleton width="5rem" styleClass="mb-2"></p-skeleton></td>
+      </tr>
+    </ng-template>
+
+  </p-table>
+</p-card>

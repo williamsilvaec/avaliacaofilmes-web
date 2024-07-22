@@ -1,0 +1,28 @@
+<p-card header="Lista de filmes vencedores por ano">
+  <div class="flex align-items-center mb-3">
+    <form [formGroup]="vencedoresPorAnoForm">
+      <input pInputText id="integer" pKeyFilter="int" formControlName="ano" />
+    </form>
+    <button pButton icon="pi pi-search" class="ml-2"
+            [loading]="loading"
+            [disabled]="vencedoresPorAnoForm.invalid"
+            (click)="pesquisar()"></button>
+  </div>
+  <p-table [value]="filmesVencedoresPorAno" [tableStyle]="{'min-width': '5rem'}">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>ID</th>
+        <th>Ano</th>
+        <th>Título</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-result>
+      <tr>
+        <td>{{ result.id }}</td>
+        <td>{{ result.ano }}</td>
+        <td>{{ result.titulo }}</td>
+      </tr>
+    </ng-template>
+
+  </p-table>
+</p-card>

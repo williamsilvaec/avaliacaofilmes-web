@@ -1,0 +1,74 @@
+<p-card header="Produtores com maior e menor intervalo entre vitórias">
+
+  <p class="subtitulo">Máximo</p>
+
+  <p-table [value]="intervaloPremios.max" [tableStyle]="{'min-width': '5rem'}"
+           [loading]="loading" [showLoader]="false">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Produtor</th>
+        <th>Intervalo</th>
+        <th>Ano anterior</th>
+        <th>Ano seguinte</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-result>
+      <tr>
+        <td>{{ result.produtor }}</td>
+        <td>{{ result.intervalo }}</td>
+        <td>{{ result.vitoriaAnterior }}</td>
+        <td>{{ result.vitoriaPosterior }}</td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="loadingbody">
+      <tr style="height:46px">
+        <td><p-skeleton width="2rem" styleClass="mb-2"></p-skeleton></td>
+        <td><p-skeleton width="5rem" styleClass="mb-2"></p-skeleton></td>
+        <td><p-skeleton width="5rem" styleClass="mb-2"></p-skeleton></td>
+        <td><p-skeleton width="5rem" styleClass="mb-2"></p-skeleton></td>
+      </tr>
+      <tr style="height:46px">
+        <td><p-skeleton width="2rem" styleClass="mb-2"></p-skeleton></td>
+        <td><p-skeleton width="2rem" styleClass="mb-2"></p-skeleton></td>
+        <td><p-skeleton width="2rem" styleClass="mb-2"></p-skeleton></td>
+        <td><p-skeleton width="5rem" styleClass="mb-2"></p-skeleton></td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+  <p class="subtitulo">Mínimo</p>
+
+  <p-table [value]="intervaloPremios.min" [tableStyle]="{'min-width': '5rem'}"
+           [loading]="loading" [showLoader]="false">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Produtor</th>
+        <th>Intervalo</th>
+        <th>Ano anterior</th>
+        <th>Ano seguinte</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-result>
+      <tr>
+        <td>{{ result.produtor }}</td>
+        <td>{{ result.intervalo }}</td>
+        <td>{{ result.vitoriaAnterior }}</td>
+        <td>{{ result.vitoriaPosterior }}</td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="loadingbody">
+      <tr style="height:46px">
+        <td><p-skeleton width="2rem" styleClass="mb-2"></p-skeleton></td>
+        <td><p-skeleton width="5rem" styleClass="mb-2"></p-skeleton></td>
+        <td><p-skeleton width="5rem" styleClass="mb-2"></p-skeleton></td>
+        <td><p-skeleton width="5rem" styleClass="mb-2"></p-skeleton></td>
+      </tr>
+      <tr style="height:46px">
+        <td><p-skeleton width="2rem" styleClass="mb-2"></p-skeleton></td>
+        <td><p-skeleton width="2rem" styleClass="mb-2"></p-skeleton></td>
+        <td><p-skeleton width="2rem" styleClass="mb-2"></p-skeleton></td>
+        <td><p-skeleton width="5rem" styleClass="mb-2"></p-skeleton></td>
+      </tr>
+    </ng-template>
+  </p-table>
+</p-card>
