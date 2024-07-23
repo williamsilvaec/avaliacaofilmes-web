@@ -16,10 +16,4 @@ import {RouterOutlet} from "@angular/router";
 })
 export class LayoutComponent {
 
-  isSidebarCollapsed = false;
-
-  toggleSidebar() {
-    this.isSidebarCollapsed = !this.isSidebarCollapsed;
-  }
-
 }

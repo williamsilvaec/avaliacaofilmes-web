@@ -1,10 +1,11 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CardModule} from "primeng/card";
 import {PrimeTemplate} from "primeng/api";
 import {TableModule} from "primeng/table";
 import {SkeletonModule} from "primeng/skeleton";
 import {FilmeService} from "../../filmes/filme.service";
 import {finalize} from "rxjs";
+import {EstudioContagem} from "../../filmes/estudio-contagem";
 
 @Component({
   selector: 'app-card-top3-estudios-vencedores',
@@ -20,7 +21,7 @@ import {finalize} from "rxjs";
 })
 export class CardTop3EstudiosVencedoresComponent implements OnInit {
 
-  topTresEstudios: any[] = [];
+  topTresEstudios: EstudioContagem[] = [];
   loading: boolean = true;
 
   constructor(private filmeService: FilmeService) {
@@ -31,13 +32,11 @@ export class CardTop3EstudiosVencedoresComponent implements OnInit {
   }
 
   listarTopTresEstudiosComMaisVencedores() {
-    setTimeout(() => {
-      this.filmeService.listarTopTresEstudiosComMaisVencedores()
-        .pipe(finalize(() => this.loading = false))
-        .subscribe(res => {
-          this.topTresEstudios = res;
-        });
-    }, 600);
+    this.filmeService.listarTopTresEstudiosComMaisVencedores()
+      .pipe(finalize(() => this.loading = false))
+      .subscribe(res => {
+        this.topTresEstudios = res;
+      });
   }
 
 }

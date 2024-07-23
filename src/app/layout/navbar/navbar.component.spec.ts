@@ -11,13 +11,13 @@ describe('NavbarComponent', () => {
       imports: [NavbarComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(NavbarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('Deve criar o componente', () => {
     expect(component).toBeTruthy();
   });
 });

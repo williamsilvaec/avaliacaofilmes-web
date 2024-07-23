@@ -46,8 +46,6 @@ export class CardFilmesVencedoresPorAnoComponent implements OnInit {
     this.vencedoresPorAnoForm = new FormGroup({
       ano: new FormControl(null, Validators.required)
     });
-
-
   }
 
   pesquisar() {
@@ -56,20 +54,15 @@ export class CardFilmesVencedoresPorAnoComponent implements OnInit {
     filtro.vencedor = 'true';
     this.loading = true;
 
-    setTimeout(() => {
+    this.filmeService.filtrar(filtro)
+      .pipe(finalize(() => this.loading = false))
+      .subscribe(res => {
+        this.filmesVencedoresPorAno = res.filmes;
 
-      this.filmeService.filtrar(filtro)
-        .pipe(finalize(() => this.loading = false))
-        .subscribe(res => {
-          this.filmesVencedoresPorAno = res.filmes;
+        if (this.filmesVencedoresPorAno.length === 0) {
+          this.mensagemService.info('Nenhum filme encontrado.');
+        }
 
-          if (this.filmesVencedoresPorAno.length === 0) {
-            this.mensagemService.info('Nenhum filme encontrado.');
-          }
-
-        });
-
-    }, 500);
+      });
   }
-
 }

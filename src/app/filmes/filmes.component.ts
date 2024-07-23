@@ -63,22 +63,20 @@ export class FilmesComponent {
     this.filmes = [];
     this.filtro.pagina = pagina;
 
-    setTimeout(() =>  {
 
-      this.filmeService.filtrar(this.filtro)
-        .pipe(finalize(() => this.loading = false))
-        .subscribe(res => {
+    this.filmeService.filtrar(this.filtro)
+      .pipe(finalize(() => this.loading = false))
+      .subscribe(res => {
 
-          this.filmes = res.filmes;
-          this.totalRegistros = res.totalElements;
+        this.filmes = res.filmes;
+        this.totalRegistros = res.totalElements;
 
-          if (pagina === 0) {
-            this.tabela.first = 0;
-          }
+        if (pagina === 0 && this.tabela) {
+          this.tabela.first = 0;
+        }
 
-        });
+      });
 
-    }, 500);
   }
 
   aoMudarPagina(event: TableLazyLoadEvent) {

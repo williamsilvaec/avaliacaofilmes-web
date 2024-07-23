@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CardModule} from "primeng/card";
 import {TableModule} from "primeng/table";
 import {FilmeService} from "../../filmes/filme.service";
@@ -31,13 +31,11 @@ export class CardAnosComVariosVencedoresComponent implements OnInit {
   }
 
   listarAnosComMaisDeUmVencedor() {
-    setTimeout(() => {
-      this.filmeService.listarAnosComMaisDeUmVencedor()
-        .pipe(finalize(() => this.loading = false))
-        .subscribe(res => {
-          this.anoContagem = res;
-        });
-    }, 600);
+    this.filmeService.listarAnosComMaisDeUmVencedor()
+      .pipe(finalize(() => this.loading = false))
+      .subscribe(res => {
+        this.anoContagem = res;
+      });
   }
 
 }

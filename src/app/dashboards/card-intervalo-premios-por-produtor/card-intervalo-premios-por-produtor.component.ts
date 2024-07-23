@@ -32,13 +32,11 @@ export class CardIntervaloPremiosPorProdutorComponent implements OnInit {
   }
 
   listarIntervaloPremios() {
-    setTimeout(() => {
-      this.produtorService.listarIntervaloPremios()
-        .pipe(finalize(() => this.loading = false))
-        .subscribe(res => {
-          this.intervaloPremios = res;
-        });
-    }, 600);
+    this.produtorService.listarIntervaloPremios()
+      .pipe(finalize(() => this.loading = false))
+      .subscribe(res => {
+        this.intervaloPremios = res;
+      });
   }
 
 }
