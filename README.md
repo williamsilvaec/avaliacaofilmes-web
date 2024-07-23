@@ -1,27 +1,44 @@
-# AvaliacaofilmesWeb
+### AvaliacaofilmesWeb
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.8.
+Este projeto foi gerado com [Angular CLI](https://github.com/angular/angular-cli) versão 18.1.1.
 
-## Development server
+## Servidor de desenvolvimento
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Execute `ng serve` para um servidor de desenvolvimento. Navegue para `http://localhost:4200/`.
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Execute `ng build` para compilar o projeto. Os artefatos de build serão armazenados no diretório `dist/`.
 
-## Running unit tests
+## Executando testes unitários
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Execute `ng test` para executar os testes unitários via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+## Executando a aplicação com Docker Compose
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Para executar a aplicação Angular e a API usando Docker Compose, siga estes passos:
 
-## Further help
+1. Certifique-se de ter o [Docker](https://www.docker.com/products/docker-desktop) e o [Docker Compose](https://docs.docker.com/compose/install/) instalados.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+2. Clone o repositório e navegue até o diretório do projeto.
+
+    ```sh
+    git clone https://github.com/williamsilvaec/avaliacaofilmes-web.git
+    cd avaliacaofilmes-web
+    ```
+
+3. Execute o Docker Compose para iniciar tanto a API quanto a aplicação Angular.
+
+    ```sh
+    docker-compose up
+    ```
+
+4. Abra seu navegador e navegue para `http://localhost:8080` para acessar a aplicação Angular. A API estará acessível em `http://localhost:8085`.
+
+5. Para parar os containers, pressione `Ctrl+C` no terminal onde `docker-compose up` está sendo executado.
+
+6. Para remover os containers, redes e volumes criados pelo `docker-compose up`, execute:
+
+    ```sh
+    docker-compose down
+    ```
