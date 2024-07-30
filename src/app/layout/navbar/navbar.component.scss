@@ -24,26 +24,3 @@
   width: calc(100% - 80px); /* Subtrai a largura da sidebar colapsada */
   left: 80px; /* Ajusta a posição para começar após a sidebar colapsada */
 }
-
-@media (max-width: 768px) {
-  .sidebar {
-    width: 80px; /* Largura colapsada */
-  }
-
-  .sidebar.collapsed {
-    width: 80px;
-  }
-
-  nav a span {
-    display: none; /* Esconde o texto dos links */
-  }
-
-  .content {
-    margin-left: 80px;
-  }
-
-  .navbar {
-    width: calc(100% - 80px);
-    left: 80px;
-  }
-}
