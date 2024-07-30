@@ -1,4 +1,4 @@
-import {Component, HostListener} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {RouterLink, RouterLinkActive} from "@angular/router";
 
 @Component({
@@ -11,8 +11,13 @@ import {RouterLink, RouterLinkActive} from "@angular/router";
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss'
 })
-export class SidebarComponent {
-  isCollapsed = window.innerWidth <= 992;
+export class SidebarComponent implements OnInit {
+  isCollapsed = false;
+
+  ngOnInit(): void {
+    this.isCollapsed = window.innerWidth <= 992;
+    this.updateSidebar();
+  }
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
