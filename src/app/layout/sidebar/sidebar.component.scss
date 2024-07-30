@@ -8,6 +8,7 @@
   top: 0;
   bottom: 0;
   left: 0;
+  padding: 16px 8px;
   transition: width 0.3s ease;
   z-index: 1000;
   overflow: hidden;
@@ -46,19 +47,18 @@
   background: #333;
   border: none;
   color: white;
-  padding: 10px;
+  padding: 0 15px;
   cursor: pointer;
   width: 100%;
   text-align: left;
   font-size: 20px;
-  padding-left: 1.6rem !important;
 }
 
 nav {
   display: flex;
   flex-direction: column;
-  margin-top: 10px;
-  padding: 10px;
+  margin-top: 32px;
+  padding: 0;
 }
 
 i.material-icons {
