@@ -1,4 +1,4 @@
-<h2>Lista de filmes</h2>
+<h1>Lista de filmes</h1>
 <p-card>
   <p-table [value]="filmes" [lazy]="true" (onLazyLoad)="aoMudarPagina($event)"
            [paginator]="true" [rows]="filtro.itensPorPagina" [totalRecords]="totalRegistros"

@@ -1,5 +1,7 @@
-<button (click)="toggleSidebar()" class="toggle-btn">☰</button>
-<nav [class.collapsed]="isCollapsed">
-  <a routerLink="/dashboards" routerLinkActive="active-link"><i class="material-icons">dashboard</i><span>Dashboards</span></a>
-  <a routerLink="/filmes" routerLinkActive="active-link"><i class="material-icons">movie</i><span>Filmes</span></a>
-</nav>
+<div class="sidebar">
+  <button (click)="toggleSidebar()" class="toggle-btn">☰</button>
+  <nav [class.collapsed]="isCollapsed">
+    <a routerLink="/dashboards" routerLinkActive="active-link"><i class="material-icons">dashboard</i><span>Dashboards</span></a>
+    <a routerLink="/filmes" routerLinkActive="active-link"><i class="material-icons">movie</i><span>Filmes</span></a>
+  </nav>
+</div>

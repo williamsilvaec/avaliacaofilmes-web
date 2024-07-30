@@ -21,8 +21,8 @@ export class SidebarComponent {
 
   toggleSidebar() {
     this.isCollapsed = !this.isCollapsed;
-    document.querySelector('app-sidebar')?.classList.toggle('collapsed', this.isCollapsed);
-    document.querySelector('app-navbar')?.classList.toggle('collapsed', this.isCollapsed);
+    document.querySelector('.sidebar')?.classList.toggle('collapsed', this.isCollapsed);
+    document.querySelector('.navbar')?.classList.toggle('collapsed', this.isCollapsed);
     document.querySelector('.content')?.classList.toggle('collapsed', this.isCollapsed);
   }
 }

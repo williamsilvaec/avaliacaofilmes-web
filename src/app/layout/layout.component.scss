@@ -11,5 +11,14 @@
 
 .content {
   flex: 1;
-  padding: 20px;
+  margin-left: 250px;
+  transition: margin-left 0.3s ease;
+  overflow-y: auto;
+  margin-top: 80px; /* Ajusta a posição para começar após a navbar */
+  padding: 10px 32px; /* Adiciona espaçamento entre o conteúdo e a navbar */
+  height: calc(100vh - 80px); /* Ajusta a altura para considerar a navbar */
+}
+
+.content.collapsed {
+  margin-left: 80px;
 }
