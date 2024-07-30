@@ -30,7 +30,7 @@ Para executar a aplicação Angular e a API usando Docker Compose, siga estes pa
 3. Execute o Docker Compose para iniciar tanto a API quanto a aplicação Angular.
 
     ```sh
-    docker-compose up
+    docker compose up
     ```
 
 4. Abra seu navegador e navegue para `http://localhost:8080` para acessar a aplicação Angular. A API estará acessível em `http://localhost:8085`.
@@ -40,5 +40,5 @@ Para executar a aplicação Angular e a API usando Docker Compose, siga estes pa
 6. Para remover os containers, redes e volumes criados pelo `docker-compose up`, execute:
 
     ```sh
-    docker-compose down
+    docker compose down
     ```
