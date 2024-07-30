@@ -1,7 +1,7 @@
 .sidebar {
   width: 250px;
   background: #333;
-  color: white;
+  color: #fff;
   display: flex;
   flex-direction: column;
   position: fixed;
@@ -14,12 +14,13 @@
   overflow: hidden;
 }
 
-.sidebar .active-link {
-  color: lightskyblue;
-}
-
 .sidebar.collapsed {
   width: 80px;
+  padding: 16px 14px 0 14px;
+}
+
+.sidebar .active-link {
+  color: lightskyblue;
 }
 
 .sidebar a {
@@ -29,6 +30,7 @@
   display: flex;
   align-items: center;
   border-radius: 8px;
+  margin-bottom: 10px;
 }
 
 .sidebar a i {
@@ -43,10 +45,14 @@
   background: #575757;
 }
 
+.sidebar-header {
+  color: #fff;
+}
+
 .toggle-btn {
   background: #333;
   border: none;
-  color: white;
+  color: #fff;
   padding: 0 15px;
   cursor: pointer;
   width: 100%;
