@@ -1,4 +1,4 @@
 export interface AnoContagem {
-  ano: number;
-  contagem: number;
+  year: number;
+  winnerCount: number;
 }

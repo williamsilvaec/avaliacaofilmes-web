@@ -17,19 +17,11 @@ export class ErrorHandlerService {
     } else if (errorResponse instanceof HttpErrorResponse && errorResponse.status >= 400 && errorResponse.status <= 500) {
       msg = 'Ocorreu um erro ao processar a sua solicitação';
 
-      try {
-        msg = errorResponse.error ? errorResponse.error.message : '';
-        msg = msg || 'Ocorreu um erro ao processar a sua solicitação';
-      } catch (e) {
-      }
-
-      console.error('Ocorreu um erro', errorResponse);
-
     } else {
       msg = 'Erro ao processar serviço remoto. Tente novamente.';
-      console.error('Ocorreu um erro', errorResponse);
     }
 
+    console.error('Ocorreu um erro', msg);
     this.messageService.clear();
     this.messageService.add({severity: 'error', summary: 'Erro', detail: msg, life: 5000});
   }

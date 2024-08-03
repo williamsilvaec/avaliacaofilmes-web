@@ -36,7 +36,7 @@ describe('CardTop3EstudiosVencedoresComponent', () => {
   });
 
   it('Deve listar os top 3 estúdios com mais vencedores', (done) => {
-    const mockResponse: EstudioContagem[] = [{estudio: 'Estúdio 1', contagem: 2}, {estudio: 'Estúdio 2', contagem: 3}];
+    const mockResponse: EstudioContagem[] = [{name: 'Estúdio 1', winCount: 2}, {name: 'Estúdio 2', winCount: 3}];
     spyOn(filmeService, 'listarTopTresEstudiosComMaisVencedores').and.returnValue(of(mockResponse));
     component.listarTopTresEstudiosComMaisVencedores();
 

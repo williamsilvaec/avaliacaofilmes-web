@@ -1,16 +1,8 @@
-version: '3.8'
 services:
-  avaliacaofilmes-api:
-    image: williamsilvaec/avaliacaofilmes-api
-    ports:
-      - "8085:8080"
-    environment:
-      - SPRING_PROFILES_ACTIVE=prod
-    networks:
-      - avaliacaofilmes-network
-
-  angular-app:
-    image: williamsilvaec/avaliacaofilmes-web
+  filmes-app:
+    build: .
+    image: filmes-web
+    container_name: filmes-web
     ports:
       - "8080:80"
     networks:

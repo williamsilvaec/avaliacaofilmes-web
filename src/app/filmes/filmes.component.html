@@ -10,7 +10,7 @@
       <tr>
         <th style="min-width:50px">ID</th>
         <th style="min-width:50px">Ano</th>
-        <th style="min-width:200px" pSortableColumn="titulo">Título<p-sortIcon field="titulo"></p-sortIcon></th>
+        <th style="min-width:200px">Título</th>
         <th style="min-width:100px">Vencedor?</th>
       </tr>
       <tr>
@@ -33,10 +33,10 @@
     <ng-template pTemplate="body" let-filme>
       <tr>
         <td><span class="p-column-title">Id</span>{{filme.id}}</td>
-        <td><span class="p-column-title">Ano</span>{{filme.ano}}</td>
-        <td><span class="p-column-title">Título</span>{{filme.titulo}}</td>
+        <td><span class="p-column-title">Ano</span>{{filme.year}}</td>
+        <td><span class="p-column-title">Título</span>{{filme.title}}</td>
         <td><span class="p-column-title">Vencedor</span>
-          <p-tag [value]="filme.vencedor ? 'Sim' : 'Não'" [severity]="getSeverity(filme.vencedor)" />
+          <p-tag [value]="filme.winner ? 'Sim' : 'Não'" [severity]="getSeverity(filme.winner)" />
         </td>
       </tr>
     </ng-template>

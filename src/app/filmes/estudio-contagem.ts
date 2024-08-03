@@ -1,4 +1,4 @@
 export interface EstudioContagem {
-  estudio: string;
-  contagem: number;
+  name: string;
+  winCount: number;
 }

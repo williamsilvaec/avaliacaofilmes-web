@@ -6,6 +6,8 @@ import {map, Observable} from "rxjs";
 import {FilmePage} from "./filme-page";
 import {AnoContagem} from "./ano-contagem";
 import {EstudioContagem} from "./estudio-contagem";
+import {IntervalosPremios} from "../produtor/intervalos-premios";
+import {Filme} from "./filme";
 
 @Injectable({providedIn: 'root'})
 export class FilmeService {
@@ -13,7 +15,7 @@ export class FilmeService {
   url: string;
 
   constructor(private httpClient: HttpClient) {
-    this.url = `${environment.apiUrl}/v1/filmes`;
+    this.url = `${environment.apiUrl}/api/movies`;
   }
 
   filtrar(filtro: FilmeFiltro): Observable<FilmePage> {
@@ -21,18 +23,12 @@ export class FilmeService {
       .set('page', filtro.pagina.toString())
       .set('size', filtro.itensPorPagina.toString());
 
-    if (filtro.ordenacao) {
-      params = params.set('sort', filtro.ordenacao);
-    } else {
-      params = params.set('sort', 'id,asc');
-    }
-
     if (filtro.ano) {
-      params = params.set('ano', filtro.ano.toString());
+      params = params.set('year', filtro.ano.toString());
     }
 
     if (filtro.vencedor !== null && filtro.vencedor !== undefined) {
-      params = params.set('vencedor', filtro.vencedor);
+      params = params.set('winner', filtro.vencedor);
     }
 
     return this.httpClient.get(this.url, {params})
@@ -44,11 +40,33 @@ export class FilmeService {
       }));
   }
 
+  listarVencedoresOuPerdedoresPorAno(ano: number, isVencedor: boolean): Observable<Filme[]> {
+    let params = new HttpParams()
+      .set('year', ano.toString())
+      .set('winner', isVencedor.toString());
+
+    return this.httpClient.get<Filme[]>(this.url, {params});
+  }
+
   listarAnosComMaisDeUmVencedor() {
-    return this.httpClient.get<AnoContagem[]>(`${this.url}/anos-com-mais-de-um-vencedor`);
+    return this.httpClient.get<AnoContagem[]>(`${this.url}?projection=years-with-multiple-winners`)
+      .pipe(map((res: any) => {
+        return res && res.years ? res.years : [];
+      }));
   }
 
   listarTopTresEstudiosComMaisVencedores() {
-    return this.httpClient.get<EstudioContagem[]>(`${this.url}/top-tres-estudios-vencedores`);
+    return this.httpClient.get<EstudioContagem[]>(`${this.url}?projection=studios-with-win-count`)
+      .pipe(map((res: any) => {
+        return res && res.studios
+          ? res.studios
+            .sort((a: { winCount: number; }, b: { winCount: number; }) => b.winCount - a.winCount)
+            .slice(0, 3)
+          : [];
+      }));
+  }
+
+  listarIntervaloPremios() {
+    return this.httpClient.get<IntervalosPremios>(`${this.url}?projection=max-min-win-interval-for-producers`);
   }
 }

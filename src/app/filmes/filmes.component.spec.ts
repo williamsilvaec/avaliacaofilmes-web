@@ -51,12 +51,9 @@ describe('FilmesComponent', () => {
     const spyFiltrar = spyOn(filmeService, 'filtrar')
       .and.returnValue(of({filmes: [], totalElements: 0}));
 
-    component.aoMudarPagina({first: 0, rows: 5, sortField: 'titulo', sortOrder: 1});
+    component.aoMudarPagina({first: 0, rows: 5});
 
-    const filtroEsperado = {
-      pagina: 0,
-      ordenacao: 'titulo,asc'
-    };
+    const filtroEsperado = {pagina: 0};
 
     expect(spyFiltrar).toHaveBeenCalledWith(jasmine.objectContaining(filtroEsperado));
   });

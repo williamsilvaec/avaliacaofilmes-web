@@ -85,11 +85,6 @@ export class FilmesComponent {
 
     const pagina = first / rows;
 
-    if (event.sortField) {
-      const order = event.sortOrder === 1 ? 'asc' : 'desc';
-      this.filtro.ordenacao = `${event.sortField},${order}`;
-    }
-
     this.pesquisar(pagina);
   }
 

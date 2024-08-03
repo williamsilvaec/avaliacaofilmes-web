@@ -1,6 +1,6 @@
 export interface ProdutorPremio {
-  produtor: string;
-  intervalo: number;
-  vitoriaAnterior: number;
-  vitoriaPosterior: number;
+  producer: string;
+  interval: number;
+  previousWin: number;
+  followingWin: number;
 }

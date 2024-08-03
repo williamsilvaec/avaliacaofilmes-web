@@ -45,18 +45,18 @@ describe('CardFilmesVencedoresPorAnoComponent', () => {
 
   it('deve pesquisar e atualizar filmesVencedoresPorAno corretamente', (done) => {
     const mockFilmes: Filme[] = [
-      {id: 1, ano: 2020, titulo: 'Filme Teste 1', estudio: "Warner bros", vencedor: true},
-      {id: 2, ano: 2020, titulo: 'Filme Teste 2', estudio: "Paramont", vencedor: true}
+      {id: 1, year: 2020, title: 'Filme Teste 1', studios: ["Warner bros"], producers: ["João"], winner: true},
+      {id: 2, year: 2020, title: 'Filme Teste 2', studios: ["Paramont"], producers: ["Fernanda", "José"], winner: true}
     ];
 
-    spyOn(filmeService, 'filtrar').and.returnValue(of({filmes: mockFilmes, totalElements: 2}));
+    spyOn(filmeService, 'listarVencedoresOuPerdedoresPorAno').and.returnValue(of(mockFilmes));
     spyOn(msgToastService, 'info');
 
     component.vencedoresPorAnoForm.controls['ano'].setValue(2020);
     component.pesquisar();
 
     setTimeout(() => {
-      expect(filmeService.filtrar).toHaveBeenCalled();
+      expect(filmeService.listarVencedoresOuPerdedoresPorAno).toHaveBeenCalled();
       expect(component.filmesVencedoresPorAno).toEqual(mockFilmes);
       expect(component.loading).toBeFalse();
       done();
@@ -65,34 +65,19 @@ describe('CardFilmesVencedoresPorAnoComponent', () => {
 
 
   it('deve exibir mensagem quando não encontrar filmes', (done) => {
-    spyOn(filmeService, 'filtrar').and.returnValue(of({filmes: [], totalElements: 0}));
+    let filmes: Filme[] = [];
+    spyOn(filmeService, 'listarVencedoresOuPerdedoresPorAno').and.returnValue(of(filmes));
     spyOn(msgToastService, 'info');
 
     component.vencedoresPorAnoForm.controls['ano'].setValue(1999);
     component.pesquisar();
 
-    expect(filmeService.filtrar).toHaveBeenCalled();
+    expect(filmeService.listarVencedoresOuPerdedoresPorAno).toHaveBeenCalled();
     expect(component.filmesVencedoresPorAno.length).toBe(0);
     expect(msgToastService.info).toHaveBeenCalledWith('Nenhum filme encontrado.');
     expect(component.loading).toBeFalse();
     done();
 
   });
-
-  // todo, implementar teste de erro
-  // it('deve lidar com erro no serviço de filmes', (done) => {
-  //   spyOn(filmeService, 'filtrar').and.returnValue(throwError(() => new Error('Erro de serviço')));
-  //   spyOn(msgToastService, 'info');
-  //
-  //   component.vencedoresPorAnoForm.controls['ano'].setValue(2020);
-  //   component.pesquisar();
-  //
-  //   setTimeout(() => {
-  //     expect(filmeService.filtrar).toHaveBeenCalled();
-  //     expect(component.loading).toBeFalse();
-  //     // Verificar se alguma mensagem de erro é exibida
-  //     done();
-  //   }, 500);
-  // });
 
 });

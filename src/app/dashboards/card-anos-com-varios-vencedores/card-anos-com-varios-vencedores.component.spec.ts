@@ -35,7 +35,7 @@ describe('CardAnosComVariosVencedoresComponent', () => {
   });
 
   it('Deve listar os anos com mais de um vencedor', (done) => {
-    const mockResponse = [{ ano: 1990, contagem: 2 }, { ano: 2000, contagem: 3 }];
+    const mockResponse = [{ year: 1990, winnerCount: 2 }, { year: 2000, winnerCount: 3 }];
     spyOn(filmeService, 'listarAnosComMaisDeUmVencedor').and.returnValue(of(mockResponse));
     component.listarAnosComMaisDeUmVencedor();
 

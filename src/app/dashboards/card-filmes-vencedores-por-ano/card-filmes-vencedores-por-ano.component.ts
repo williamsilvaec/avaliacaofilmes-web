@@ -3,7 +3,6 @@ import {Filme} from "../../filmes/filme";
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {FilmeService} from "../../filmes/filme.service";
 import {MsgToastService} from "../../shared/msg-toast-service";
-import {FilmeFiltro} from "../../filmes/filme-filtro";
 import {finalize} from "rxjs";
 import {ButtonDirective} from "primeng/button";
 import {CardModule} from "primeng/card";
@@ -49,15 +48,13 @@ export class CardFilmesVencedoresPorAnoComponent implements OnInit {
   }
 
   pesquisar() {
-    let filtro = new FilmeFiltro();
-    filtro.ano = this.vencedoresPorAnoForm.get('ano')?.value;
-    filtro.vencedor = 'true';
+    let ano = this.vencedoresPorAnoForm.get('ano')?.value;
     this.loading = true;
 
-    this.filmeService.filtrar(filtro)
+    this.filmeService.listarVencedoresOuPerdedoresPorAno(ano, true)
       .pipe(finalize(() => this.loading = false))
       .subscribe(res => {
-        this.filmesVencedoresPorAno = res.filmes;
+        this.filmesVencedoresPorAno = res;
 
         if (this.filmesVencedoresPorAno.length === 0) {
           this.mensagemService.info('Nenhum filme encontrado.');

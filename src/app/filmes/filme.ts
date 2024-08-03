@@ -1,7 +1,8 @@
 export interface Filme {
   id: number;
-  ano: number;
-  titulo: string;
-  estudio: string;
-  vencedor: boolean;
+  year: number;
+  title: string;
+  studios: string[];
+  producers: string[];
+  winner: boolean;
 }
